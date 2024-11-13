@@ -6,15 +6,21 @@ const PokemonItem = ({ name, number }) => {
 
     return (
         <View style={styles.itemContainer}>
-            <Text style={styles.pokemonName}>{name}</Text>
-            <Image source={{ uri: cardImageUrl }} style={styles.cardImage} />
+            <View style={styles.nameBox}>
+                <Text style={styles.pokemonName}>{name}</Text>
+            </View>
+
+            <View style={styles.imageBox}>
+                <Image source={{ uri: cardImageUrl }} style={styles.cardImage} />
+            </View>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
     itemContainer: {
-        flexDirection: 'column', // Changed to column to stack name on top of card
+        flexDirection: 'row',
+        alignItems: 'center',
         padding: 10,
         marginBottom: 10,
         backgroundColor: '#fff',
@@ -23,17 +29,28 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.1,
         shadowRadius: 5,
         shadowOffset: { width: 0, height: 2 },
-        width: '100%',
+    },
+    nameBox: {
+        flex: 1,
+        justifyContent: 'center',
         alignItems: 'center',
+        padding: 10,
+        marginRight: 5,
+    },
+    imageBox: {
+        flex: 2,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 10,
     },
     pokemonName: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginBottom: 10,
+        textAlign: 'center',
     },
     cardImage: {
-        width: 200,
-        height: 300,
+        width: 150,
+        height: 225,
         borderRadius: 8,
     },
 });
